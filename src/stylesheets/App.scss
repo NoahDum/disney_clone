@@ -1,0 +1,232 @@
+@use "variables" as v;
+@use "mixins";
+@use "reset";
+
+.App {
+  background-color: #454750;
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+
+  .App-header {
+    .App-logo {
+      width: 16rem;
+      cursor: pointer;
+    }
+  }
+
+  .App-container {
+    padding: 0 2rem;
+  }
+
+  // Comportement par défaut des composants Card
+  .ant-card {
+    cursor: pointer;
+    box-shadow: 0 0.5rem 2rem v.$color-shadow;
+
+    .ant-card-body {
+      padding: 0;
+    }
+  }
+
+  // Comportement par défaut du composant Skeleton
+  .ant-skeleton.ant-skeleton-active .ant-skeleton-content .ant-skeleton-title,
+  .ant-skeleton.ant-skeleton-active .ant-skeleton-content .ant-skeleton-paragraph > li {
+    background: linear-gradient(90deg, #35363d 25%, #282830 37%, #35363d 63%);
+    background-size: 400% 100%;
+  }
+}
+
+// ---------- HOME ---------
+.highlight-item {
+  .ant-card {
+    &.ant-card-bordered {
+      border: 0;
+    }
+
+    .ant-card-cover {
+      height: 35rem;
+      overflow: hidden;
+    }
+  }
+}
+
+.companies {
+  padding: 2rem 0;
+
+  .ant-card {
+    background: linear-gradient(to bottom, #63636e 40%, #3b3d46 100%);
+    border-radius: 1rem;
+    box-shadow: 0 1rem 1rem v.$color-shadow;
+
+    &.ant-card-bordered {
+      border: 2px solid #9093a3;
+    }
+
+    .ant-card-cover {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 15rem;
+
+      img {
+        width: 70%;
+      }
+    }
+  }
+}
+
+.new,
+.suggestions {
+  padding: 2rem 0;
+
+  h2 {
+    text-align: left;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 0 0 2rem v.$color-shadow;
+  }
+
+  .ant-card {
+    &.ant-card-bordered {
+      border: 0;
+    }
+  }
+}
+
+// ---------- MOVIE --------------
+.movie {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  text-align: left;
+
+  .movie-poster {
+    flex-basis: 24%;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    .play-wrapper {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: rgba(143, 146, 162, 0.3);
+      transition: 0.2s background-color;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(143, 146, 162, 0.5);
+
+        .anticon {
+          transform: scale(1.4);
+        }
+      }
+
+      .anticon {
+        transition: 0.4s transform;
+        font-size: 5rem;
+      }
+    }
+  }
+
+  .movie-body {
+    flex-basis: 74%;
+
+    h1 {
+      color: white;
+      text-shadow: 0 0 2rem v.$color-shadow;
+    }
+
+    p {
+      padding: 1.5rem 0;
+      text-align: justify;
+    }
+  }
+}
+
+// ------ MOVIE MODAL ------
+.ant-modal {
+  .ant-modal-body {
+    padding: 0;
+    background-color: v.$color-shadow;
+
+    iframe {
+      width: 100vw;
+      height: 56.25vw;
+    }
+  }
+}
+
+// ------ COMPANY --------
+.company-intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem 0 2rem;
+
+  .company-logo {
+    width: 16rem;
+    margin-right: 1rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .company-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+}
+
+.ant-col {
+  padding: 0.5rem;
+}
+
+// CARROUSEL
+.ant-carousel {
+  height: 35rem;
+  box-shadow: 0 0.5rem 2rem v.$color-shadow;
+  margin: 1rem 0;
+
+  .ant-card {
+    box-shadow: none;
+  }
+
+  .slick-dots-bottom {
+    bottom: 30px;
+  }
+
+  .slick-dots {
+    li {
+      button {
+        width: 15px;
+        height: 15px;
+        box-shadow: 0 0.5rem 2rem v.$color-shadow;
+      }
+      &.slick-active {
+        width: 60px;
+        
+        button {
+          width: 60px;
+        }
+      }
+    }
+  }
+}
